@@ -97,7 +97,7 @@ function Home() {
             >
               <p className="text-sm text-red-700">Error: {error.name}</p>
             </div>
-            <Label className="mb-2">Select a Test</Label>
+            <Label className="mb-2">Test</Label>
             <Select name="testId">
               <SelectTrigger className="w-full">
                 <SelectValue placeholder="Select a test" />
