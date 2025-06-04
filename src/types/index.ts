@@ -29,3 +29,7 @@ export type UserAnswer = {
   questionId: number
   answerId: number
 }
+
+export type TestSelectError = {
+  [key: string]: string | null
+}
