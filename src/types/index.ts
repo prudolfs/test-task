@@ -36,5 +36,7 @@ export type TestSelectError = {
 
 export type TestStore = {
   name: string
+  answers: boolean[]
   setName: (name: string) => void
+  setAnswers: (answers: boolean[]) => void
 }

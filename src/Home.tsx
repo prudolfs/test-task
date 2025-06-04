@@ -72,20 +72,29 @@ function Home() {
       <form onSubmit={handleSubmit}>
         <Card className="w-80 lg:w-128">
           <CardHeader>
-            <CardTitle className="flex flex-col justify-center items-center">
-              <h1 className="text-xl lg:text-2xl font-bold">Welcome to the Test</h1>
+            <CardTitle className="flex flex-col items-center justify-center">
+              <h1 className="text-xl font-bold lg:text-2xl">
+                Welcome to the Test
+              </h1>
               <div className="mt-4">
-                <AcademicCap className="w-18 h-18 stroke-violet-800" />
+                <AcademicCap className="h-18 w-18 stroke-violet-800" />
               </div>
             </CardTitle>
           </CardHeader>
           <CardContent>
-            <Label htmlFor="name" className="mb-2">Your Name</Label>
-            <Input id="name" name="name" type="text" placeholder="Enter your name" />
-            <div className={`my-1 flex ml-4 ${clsx(!error.name && 'opacity-0')}`}>
-              <p className="text-red-700 text-sm">
-                Error: {error.name}
-              </p>
+            <Label htmlFor="name" className="mb-2">
+              Your Name
+            </Label>
+            <Input
+              id="name"
+              name="name"
+              type="text"
+              placeholder="Enter your name"
+            />
+            <div
+              className={`my-1 ml-4 flex ${clsx(!error.name && 'opacity-0')}`}
+            >
+              <p className="text-sm text-red-700">Error: {error.name}</p>
             </div>
             <Label className="mb-2">Select a Test</Label>
             <Select name="testId">
@@ -100,10 +109,10 @@ function Home() {
                 ))}
               </SelectContent>
             </Select>
-            <div className={`my-1 flex ml-4 ${clsx(!error.testId && 'opacity-0')}`}>
-              <p className="text-red-700 text-sm">
-                Error: {error.testId}
-              </p>
+            <div
+              className={`my-1 ml-4 flex ${clsx(!error.testId && 'opacity-0')}`}
+            >
+              <p className="text-sm text-red-700">Error: {error.testId}</p>
             </div>
           </CardContent>
           <CardFooter>
