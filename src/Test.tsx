@@ -23,9 +23,9 @@ function Test() {
 
   const testId = id && parseInt(id)
   const questionId = qid && parseInt(qid)
-  const testIndex = tests.findIndex(test => test.id === testId)
+  const testIndex = tests.findIndex((test) => test.id === testId)
   const questionIndex = tests[testIndex].questions.findIndex(
-    question => question.id === questionId,
+    (question) => question.id === questionId,
   )
 
   if (!tests[testIndex] || !tests[testIndex].questions[questionIndex]) {

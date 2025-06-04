@@ -24,7 +24,7 @@ import AcademicCap from '@/icons/AcademicCap'
 import type { TestSelectError } from '@/types'
 
 function Home() {
-  const { setName } = useStore()
+  const { setName, setAnswers } = useStore()
   const [error, setError] = useState<TestSelectError>({
     name: null,
     testId: null,
@@ -63,6 +63,7 @@ function Home() {
       return
     }
 
+    setAnswers([])
     setName(name)
     navigate(`/test/${testId}/${test.questions[0].id}`)
   }
