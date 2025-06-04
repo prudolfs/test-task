@@ -1,12 +1,26 @@
+import clsx from 'clsx'
 import { useState } from 'react'
-import { useNavigate } from "react-router";
-import { Card, CardContent, CardFooter, CardHeader, CardTitle } from '@/components/ui/card'
-import { Button } from './components/ui/button'
-import { Input } from './components/ui/input'
-import { Select, SelectTrigger, SelectContent, SelectItem } from './components/ui/select'
+import { useNavigate } from 'react-router'
+import {
+  Card,
+  CardContent,
+  CardFooter,
+  CardHeader,
+  CardTitle,
+} from '@/components/ui/card'
+import { Label } from '@/components/ui/label'
+import { Button } from '@/components/ui/button'
+import { Input } from '@/components/ui/input'
+import {
+  Select,
+  SelectTrigger,
+  SelectContent,
+  SelectItem,
+} from '@/components/ui/select'
 import { SelectValue } from '@radix-ui/react-select'
 import { tests } from '@/data/tests'
 import { useStore } from '@/store'
+import AcademicCap from '@/icons/AcademicCap'
 import type { TestSelectError } from '@/types'
 
 function Home() {
@@ -26,7 +40,7 @@ function Home() {
 
     if (!name) {
       setError({
-        name: 'Error: Name is required',
+        name: 'Name is required',
         testId: null,
       })
       return
@@ -35,7 +49,7 @@ function Home() {
     if (isNaN(testId)) {
       setError({
         name: null,
-        testId: 'Error: Selected test is required',
+        testId: 'Selected test is required',
       })
       return
     }
@@ -44,7 +58,7 @@ function Home() {
     if (!test) {
       setError({
         name: null,
-        testId: 'Error: Selected test is required',
+        testId: 'Selected test is required',
       })
       return
     }
@@ -54,18 +68,28 @@ function Home() {
   }
 
   return (
-    <div className="flex flex-col items-center justify-center h-screen">
+    <div className="flex h-screen flex-col items-center justify-center">
       <form onSubmit={handleSubmit}>
-        <Card>
+        <Card className="w-80 lg:w-128">
           <CardHeader>
-            <CardTitle>Welcome to the Test</CardTitle>
+            <CardTitle className="flex flex-col justify-center items-center">
+              <h1 className="text-xl lg:text-2xl font-bold">Welcome to the Test</h1>
+              <div className="mt-4">
+                <AcademicCap className="w-18 h-18 stroke-violet-800" />
+              </div>
+            </CardTitle>
           </CardHeader>
-
           <CardContent>
-            <Input name="name" type="text" placeholder="Enter your name" />
-            {error.name && <p className="text-red-500">{error.name}</p>}
+            <Label htmlFor="name" className="mb-2">Your Name</Label>
+            <Input id="name" name="name" type="text" placeholder="Enter your name" />
+            <div className={`my-1 flex ml-4 ${clsx(!error.name && 'opacity-0')}`}>
+              <p className="text-red-700 text-sm">
+                Error: {error.name}
+              </p>
+            </div>
+            <Label className="mb-2">Select a Test</Label>
             <Select name="testId">
-              <SelectTrigger>
+              <SelectTrigger className="w-full">
                 <SelectValue placeholder="Select a test" />
               </SelectTrigger>
               <SelectContent>
@@ -76,10 +100,14 @@ function Home() {
                 ))}
               </SelectContent>
             </Select>
-            {error.testId && <p className="text-red-500">{error.testId}</p>}
+            <div className={`my-1 flex ml-4 ${clsx(!error.testId && 'opacity-0')}`}>
+              <p className="text-red-700 text-sm">
+                Error: {error.testId}
+              </p>
+            </div>
           </CardContent>
           <CardFooter>
-            <Button>Start</Button>
+            <Button className="w-full">Start</Button>
           </CardFooter>
         </Card>
       </form>
