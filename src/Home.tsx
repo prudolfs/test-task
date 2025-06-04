@@ -6,9 +6,11 @@ import { Input } from './components/ui/input'
 import { Select, SelectTrigger, SelectContent, SelectItem } from './components/ui/select'
 import { SelectValue } from '@radix-ui/react-select'
 import { tests } from '@/data/tests'
+import { useStore } from '@/store'
 import type { TestSelectError } from '@/types'
 
 function Home() {
+  const { setName } = useStore()
   const [error, setError] = useState<TestSelectError>({
     name: null,
     testId: null,
@@ -47,6 +49,7 @@ function Home() {
       return
     }
 
+    setName(name)
     navigate(`/test/${testId}/${test.questions[0].id}`)
   }
 

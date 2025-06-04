@@ -33,3 +33,8 @@ export type UserAnswer = {
 export type TestSelectError = {
   [key: string]: string | null
 }
+
+export type TestStore = {
+  name: string
+  setName: (name: string) => void
+}
