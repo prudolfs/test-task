@@ -25,25 +25,29 @@ function Result() {
             <div>
               <Trophy className="h-18 w-18 stroke-yellow-500" />
             </div>
-            <h1 className="text-xl font-bold lg:text-2xl text-center mt-4">
+            <h1 className="mt-4 text-center text-xl font-bold lg:text-2xl">
               Congratulations, {name}!
             </h1>
-            <p className="text-muted-foreground mt-1 text-sm text-center">
+            <p className="text-muted-foreground mt-1 text-center text-sm">
               You have completed the test
             </p>
           </CardTitle>
         </CardHeader>
         <CardContent>
-          <div className="flex flex-col items-center justify-center p-8 bg-gray-50 rounded-lg">
-            <h2 className="text-5xl text-violet-700 font-bold">{percentage}%</h2>
-            <p className="text-center text-muted-foreground mt-2">
-              You have answered {correctAnswers} out of {totalQuestions} questions
-              correctly.
+          <div className="flex flex-col items-center justify-center rounded-lg bg-gray-50 p-8">
+            <h2 className="text-5xl font-bold text-violet-700">
+              {percentage}%
+            </h2>
+            <p className="text-muted-foreground mt-2 text-center">
+              You have answered {correctAnswers} out of {totalQuestions}{' '}
+              questions correctly.
             </p>
           </div>
         </CardContent>
         <CardFooter>
-          <Button className="w-full" onClick={() => navigate('/')}>Return to Home</Button>
+          <Button className="w-full" onClick={() => navigate('/')}>
+            Return to Home
+          </Button>
         </CardFooter>
       </Card>
     </div>

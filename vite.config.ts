@@ -1,4 +1,5 @@
 import path from 'path'
+import type { UserConfig } from 'vite'
 import { defineConfig } from 'vite'
 import tailwindcss from '@tailwindcss/vite'
 import react from '@vitejs/plugin-react-swc'
@@ -11,4 +12,9 @@ export default defineConfig({
       '@': path.resolve(__dirname, './src'),
     },
   },
-})
+  test: {
+    environment: 'jsdom',
+    globals: true,
+    setupFiles: './src/tests/setup.js',
+  },
+} as UserConfig)
