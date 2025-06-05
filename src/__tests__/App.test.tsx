@@ -1,6 +1,6 @@
 import { render, screen, fireEvent } from '@testing-library/react'
 import { describe, it, expect } from 'vitest'
-import userEvent from "@testing-library/user-event";
+import userEvent from '@testing-library/user-event'
 import { MemoryRouter } from 'react-router'
 import App from '@/App'
 
@@ -55,11 +55,13 @@ describe('App Navigation', () => {
         <App />
       </MemoryRouter>,
     )
-    const nameInput = screen.getByPlaceholderText('Enter your name');
+    const nameInput = screen.getByPlaceholderText('Enter your name')
     fireEvent.change(nameInput, { target: { value: 'John Doe' } })
     const submitButton = screen.getByText('Start Test')
     fireEvent.click(submitButton)
-    expect(screen.getByText('Error: Selected test is required')).toBeInTheDocument()
+    expect(
+      screen.getByText('Error: Selected test is required'),
+    ).toBeInTheDocument()
   })
 
   it('should type name and select test', async () => {
@@ -69,7 +71,7 @@ describe('App Navigation', () => {
         <App />
       </MemoryRouter>,
     )
-    const nameInput = screen.getByPlaceholderText('Enter your name');
+    const nameInput = screen.getByPlaceholderText('Enter your name')
     fireEvent.change(nameInput, { target: { value: 'John Doe' } })
     const select = screen.getByTestId('select-trigger')
     await user.click(select)
@@ -91,7 +93,7 @@ describe('App Navigation', () => {
         <App />
       </MemoryRouter>,
     )
-    const nameInput = screen.getByPlaceholderText('Enter your name');
+    const nameInput = screen.getByPlaceholderText('Enter your name')
     fireEvent.change(nameInput, { target: { value: 'John Doe' } })
     const select = screen.getByTestId('select-trigger')
     await user.click(select)
@@ -118,6 +120,8 @@ describe('App Navigation', () => {
 
     expect(screen.getByText('Congratulations, John Doe!')).toBeInTheDocument()
     expect(screen.getByText('100%')).toBeInTheDocument()
-    expect(screen.getByText('You have answered 3 out of 3 questions correctly.')).toBeInTheDocument()
+    expect(
+      screen.getByText('You have answered 3 out of 3 questions correctly.'),
+    ).toBeInTheDocument()
   })
 })
