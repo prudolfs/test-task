@@ -1,9 +1,9 @@
-import { render, screen } from '@testing-library/react'
+import { render, screen, fireEvent } from '@testing-library/react'
 import { describe, it, expect } from 'vitest'
 import { MemoryRouter } from 'react-router'
 import App from '@/App'
 
-describe('App', () => {
+describe('App Rendering', () => {
   it('should render home page', () => {
     render(
       <MemoryRouter initialEntries={['/']}>
@@ -33,5 +33,31 @@ describe('App', () => {
       </MemoryRouter>,
     )
     expect(screen.getByText('You have completed the test')).toBeInTheDocument()
+  })
+})
+
+describe('App Navigation', () => {
+  it('should show error if name is not provided', () => {
+    render(
+      <MemoryRouter initialEntries={['/']}>
+        <App />
+      </MemoryRouter>,
+    )
+    const submitButton = screen.getByText('Start Test')
+    fireEvent.click(submitButton)
+    expect(screen.getByText('Error: Name is required')).toBeInTheDocument()
+  })
+
+  it('should show error if test is not selected', () => {
+    render(
+      <MemoryRouter initialEntries={['/']}>
+        <App />
+      </MemoryRouter>,
+    )
+    const nameInput = screen.getByPlaceholderText('Enter your name');
+    fireEvent.change(nameInput, { target: { value: 'John Doe' } })
+    const submitButton = screen.getByText('Start Test')
+    fireEvent.click(submitButton)
+    expect(screen.getByText('Error: Selected test is required')).toBeInTheDocument()
   })
 })

@@ -99,7 +99,7 @@ function Home() {
             </div>
             <Label className="mb-2">Test</Label>
             <Select name="testId">
-              <SelectTrigger className="w-full">
+              <SelectTrigger className="w-full" data-testid="select-trigger">
                 <SelectValue placeholder="Select a test" />
               </SelectTrigger>
               <SelectContent>
@@ -117,7 +117,7 @@ function Home() {
             </div>
           </CardContent>
           <CardFooter>
-            <Button className="w-full">Start</Button>
+            <Button className="w-full">Start Test</Button>
           </CardFooter>
         </Card>
       </form>
